@@ -1,6 +1,7 @@
 {
 "receipts":[
     {"id":0,
+"commodityName":"syphichek",
 "date":"2018-12-10T23:59:59.000Z",
 "receivedFrom":"Nakuru County",
 "docNo":"068168",
@@ -14,7 +15,7 @@
 }
 ],
 "disbursement":[
-{
+{ "commodityName":"syphichek",
 "id":0,
 "date":"2018-12-10T23:59:59.000Z",
 "docNo":"4732",
@@ -25,10 +26,11 @@
 }
 ],
 "stock":[
-    {
+    {"commodityName":"syphichek",
  "balance":3,
 "unitValue":25,
-"totalValue":75
+"totalValue":75,
+"id":0
 }]
 }
 
