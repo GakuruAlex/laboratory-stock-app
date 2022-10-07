@@ -17,8 +17,9 @@ function Form(
     docNo,
     quantity,
     batchNo,
+    name,
     expiryDate,
-    receiversName,
+
     loc
   }
 ) {
@@ -27,15 +28,15 @@ function Form(
     return (
   <React.Fragment>
 <form class=" mt-2 px-2 mx-2 mb-2
- bg-sky-400 	background-color: rgb(14, 165, 233);">
+ bg-sky-400 	background-color: rgb(14, 165, 233) ">
 
 {/*Conditional rendering based on the form props */}
 
 {/*First row */}
-  <div class=" grid gap-1 grid-cols-4 grid-rows-2">
+  <div class=" 	">
 
 
-  <div class=" px-1 mb-5 ">
+  <div class=" px-1 mb-5 inline-block">
 
   {/*Commodity name */}
    {commodityName ? <>
@@ -56,7 +57,7 @@ function Form(
 
 
 {/*Unit of Issues */}
-    <div class=" px-1 mb-5 ">
+    <div class=" px-1 mb-5 inline-block">
      { unitOfIssue ?<><label class="block uppercase tracking-wide
        text-gray-700 text-xs font-bold mb-2"
        for="unit-of-issue"/>
@@ -75,7 +76,7 @@ function Form(
 
     {/*Item code */}
 
-    <div class=" px-1 mb-5 ">
+    <div class=" px-1 mb-5 inline-block">
       {itemCode ?<>
       <label class="block uppercase tracking-wide
        text-gray-700 text-xs font-bold mb-2"
@@ -95,7 +96,7 @@ function Form(
 
 
    {/*Storage Requirements */}
-    <div class=" px-1 mb-5 ">
+    <div class=" px-1 mb-5 inline-block ">
       {storageRequirements ?<><label class="block uppercase tracking-wide
        text-gray-700 text-xs font-bold mb-2"
        for="storage-requirements"/>
@@ -114,7 +115,7 @@ function Form(
 
 
     {/*Average Monthly Requirements */}
-    <div class=" px-1 mb-5 ">
+    <div class=" px-1 mb-5 inline-block">
      { averageMonthlyConsumption ?<><label class="block uppercase tracking-wide
       text-gray-700 text-xs font-bold mb-2"
       for="average-monthly-consumption"/>
@@ -136,7 +137,7 @@ function Form(
 
 
   {/*Minimun level*/}
-    <div class=" px-1 mb-5 ">
+    <div class=" px-1 mb-5 inline-block">
      { minimumValue ?<><label class="block uppercase tracking-wide
        text-gray-700 text-xs font-bold mb-2"
        for="minimum-level"/>
@@ -155,7 +156,7 @@ function Form(
 
 {/*Maximum value */}
 
-    <div class=" px-1 mb-5 ">
+    <div class=" px-1 mb-5 inline-block ">
       {maximumValue ?<><label class="block uppercase tracking-wide
        text-gray-700 text-xs font-bold mb-2"
        for="maximum-value"/>
@@ -172,14 +173,10 @@ function Form(
          :null}
     </div>
 
-  </div>
 
-{/*Second row */}
-
-  <div class=" grid gap-1 grid-cols-8 grid-rows-1">
 
 {/*Date */}
-  <div class=" px-1 mb-5 ">
+  <div class=" px-1 mb-5 inline-block">
       {date ?<><label class="block uppercase tracking-wide
        text-gray-700 text-xs font-bold mb-2"
        for="date"/>
@@ -197,7 +194,7 @@ function Form(
 
 
     {/*Received From */}
-    <div class=" px-1 mb-5 ">
+    <div class=" px-1 mb-5 inline-block">
 
       {receivedFrom ?<><label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
       for="grid-received-from"/>
@@ -216,7 +213,7 @@ function Form(
 
     {/*document Number*/}
 
-    <div class=" px-1 mb-5 ">
+    <div class=" px-1 mb-5 inline-block ">
       {docNo ?<><label class="block uppercase tracking-wide
        text-gray-700 text-xs font-bold mb-2"
        for="grid-doc-no"/>
@@ -233,7 +230,7 @@ function Form(
     </div>
 
     {/*Quantity*/}
-    <div class=" px-1 mb-5 ">
+    <div class=" px-1 mb-5 inline-block ">
       {quantity ?<><label class="block uppercase tracking-wide
        text-gray-700 text-xs font-bold mb-2"
         for="grid-quantity"/>
@@ -253,7 +250,7 @@ function Form(
 
 
     {/*Batch Number */}
-    <div class=" px-1 mb-5 ">
+    <div class=" px-1 mb-5 inline-block">
      { batchNo ? <><label class="block uppercase tracking-wide
        text-gray-700 text-xs font-bold mb-2"
         for="grid-batch-no"/>
@@ -274,7 +271,7 @@ function Form(
 
 
     {/*expiryDate*/}
-    <div class=" px-1 mb-5 ">
+    <div class=" px-1 mb-5 inline-block ">
     {expiryDate ?<><label class="block uppercase tracking-wide
        text-gray-700 text-xs font-bold mb-2"
        for="grid-expiry-date"/>
@@ -294,7 +291,7 @@ function Form(
     </div>
 
      {/*Location */}
-    <div class=" px-1 mb-5 ">
+    <div class=" px-1 mb-5 inline-block ">
      {loc ?<> <label class="block uppercase tracking-wide
        text-gray-700 text-xs font-bold mb-2"
        for="grid-loc"/>
@@ -314,11 +311,11 @@ function Form(
 
    {/*Recipients Name */}
 
-    <div class=" px-1 mb-5 ">
-      {receiversName ? <><label class="block uppercase tracking-wide
+    <div class=" px-1 mb-5 inline-block">
+      {name ? <><label class="block uppercase tracking-wide
        text-gray-700 text-xs font-bold mb-2"
        for="grid-doc-no"/>
-       {receiversName}
+       {name}
 
       <input class="appearance-none block w-full
        bg-gray-200
@@ -328,7 +325,7 @@ function Form(
            focus:border-gray-500"
            id="grid-recei vers-name"
            type="text"
-           placeholder={receiversName}/></>:null}
+           placeholder={name}/></>:null}
     </div>
   </div>
 
