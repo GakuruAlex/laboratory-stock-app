@@ -21,6 +21,9 @@ return <React.Fragment key={aStock.id} >
       <th class="border border-slate-300 ...">Balance</th>
       <th class="border border-slate-300 ...">Unit Value</th>
       <th class="border border-slate-300 ...">Total Value</th>
+      <th class="border border-slate-300 ...">Expiry Date</th>
+      <th class="border border-slate-300 ...">Action</th>
+
     </tr>
   </thead>
   <tbody>
@@ -28,6 +31,8 @@ return <React.Fragment key={aStock.id} >
       <td class="border border-slate-300 ...">{aStock.commodityName}</td>
       <td class="border border-slate-300 ...">{aStock.balance}</td>
       <th class="border border-slate-300 ...">{aStock.unitValue}</th>
+      <th class="border border-slate-300 ...">{aStock.totalValue}</th>
+      <th class="border border-slate-300 ...">{aStock.expiry}</th>
       <th class="border border-slate-300 ...">{aStock.totalValue}</th>
     </tr>
 
