@@ -1,4 +1,4 @@
-import React, { useState,createRef } from "react";
+import React, { useState,createRef ,useEffect} from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import { Button } from "react-bootstrap";
 import Col from 'react-bootstrap/Col';
@@ -13,6 +13,21 @@ const formData=createRef();
 const [commodities,setCommodities]=useState([]);
 
 const url="http://localhost:3000/receipts";
+
+
+useEffect(()=>{
+
+    fetch(url)
+    .then((response)=>response.json())
+    .then((data)=>{
+
+     return setCommodities(data)})
+    .catch((error)=>console.log("Error",error))
+
+    },[]);
+
+
+
 
 const add=(event)=>{
 
