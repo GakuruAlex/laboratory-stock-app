@@ -1,35 +1,49 @@
 import React ,{useEffect,useState}from "react";
 
-import Receipts from "./Receipts";
+
+import Disbursment from "./Disbursment";
+
 
 function Stock() {
-const baseUrl= "http://localhost:3000/stock";
+const baseUrl= "http://localhost:3000/receipts";
 
 const [stockData,setStockData]=useState([])
 
+
+//Redirect to dispatch
+const [isDispatch, setIsDispatch] = useState(false);
+
 useEffect(()=>{
 
-fetch(baseUrl)
+const fetchStock=()=>{fetch(baseUrl)
 .then((response)=>response.json())
 .then((data)=>{
 
  return setStockData(data)})
-.catch((error)=>console.log("Error",error))
-
+.catch((error)=>console.log("Error",error))}
+fetchStock();
 },[]);
 
 
 
+const handleClick = event => {
+  // 👇️ toggle shown state
+  setIsDispatch(current => !current);
+
+
+};
 
 const displayStock=stockData.map((aStock)=>{
+
 return <React.Fragment key={aStock.id} >
+
+
+
 <table class="border-separate border-spacing-3 border border-slate-300 ...">
   <thead>
     <tr>
-      <th class="border border-slate-300 ...">Commodity Name</th>
+      <th class="border border-slate-300 ...">Batch number</th>
       <th class="border border-slate-300 ...">Balance</th>
-      <th class="border border-slate-300 ...">Unit Value</th>
-      <th class="border border-slate-300 ...">Total Value</th>
       <th class="border border-slate-300 ...">Expiry Date</th>
       <th class="border border-slate-300 ...">Action</th>
 
@@ -37,12 +51,14 @@ return <React.Fragment key={aStock.id} >
   </thead>
   <tbody>
     <tr>
-      <td class="border border-slate-300 ...">{aStock.commodityName}</td>
-      <td class="border border-slate-300 ...">{aStock.balance}</td>
-      <th class="border border-slate-300 ...">{aStock.unitValue}</th>
-      <th class="border border-slate-300 ...">{aStock.totalValue}</th>
+      <td class="border border-slate-300 ...">{aStock.batchNo}</td>
+      <td class="border border-slate-300 ...">{aStock.quantity}</td>
       <th class="border border-slate-300 ...">{aStock.expiry}</th>
-      <th class="border border-slate-300 ...">{aStock.totalValue}</th>
+      <th>  <Button variant="primary"  type="button"  onClick={handleClick}>
+        Dispatch Stock
+
+    </Button></th>
+
     </tr>
 
   </tbody>
@@ -54,7 +70,12 @@ return <React.Fragment key={aStock.id} >
 
 
 
-    return ( <React.Fragment>{displayStock}</React.Fragment> );
+    return ( <React.Fragment>{displayStock}
+
+
+{isDispatch && <Disbursment />}
+
+    </React.Fragment> );
 }
 
 export default Stock;
