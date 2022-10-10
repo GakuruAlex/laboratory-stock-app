@@ -12,38 +12,55 @@ const formData=createRef();
 
 const [commodities,setCommodities]=useState([]);
 
-const url="http://localhost:3000/receipts";
+const [stock,setStock]=useState([]);
+
+const fetchUrl="http://localhost:3000";
+const receiptsUrl="http://localhost:3000/receipts";
+const stockUrl="http://localhost:3000/stock";
 
 
 useEffect(()=>{
+//Fetch existing  receipts transactions
+const receiptData=fetchData(receiptsUrl)
+setCommodities(receiptData)
+//fetch existing stock data
+const stockData=fetchData(stockUrl)
+setStock(stockData)
 
-    fetch(url)
-    .then((response)=>response.json())
-    .then((data)=>{
-
-     return setCommodities(data)})
-    .catch((error)=>console.log("Error : ",error))
 
     },[]);
 
+//fetch abstraction
+function fetchData(url){
+   fetch(url)
+   .then((response)=>response.json())
+   .then((data)=>data)
+   .catch((error)=>error);
+}
 
 
+const increaseStock=()=>{
+
+
+}
 
 const add=(event)=>{
 
 event.preventDefault();
-
+//capture inputs
 const newCommodity={
 
 dateReceived:formData.current.date_received.value,
-commodityName:formData.current.commodity_name.value,
+batchNo:formData.current.batch_no.value,
 receivedFrom:formData.current.received_from.value,
 quantity:Number(formData.current.quantity.value),
 receivedBy:formData.current.received_by.value,
 expiry:formData.current.expiry.value
 
 }
-fetch(url, {
+
+//post new transactions to database
+fetch(receiptsUrl, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -59,6 +76,7 @@ setCommodities([...commodities,newCommodity]);
 
   return (
     <React.Fragment>
+   {/*Receipts Form  */}
    <Form onSubmit={add} ref={formData} class="  m-2">
 <Row>
 
@@ -69,9 +87,9 @@ setCommodities([...commodities,newCommodity]);
     </Form.Group>
  </Col>
  <Col>
-    <Form.Group controlId="formBasicProductName">
-    <Form.Label>Commodity Name:</Form.Label>
-    <Form.Control type="text" placeholder="Enter Product Name" name="commodity_name"/>
+    <Form.Group controlId="formBasicBatchNumber">
+    <Form.Label>Batch Number:</Form.Label>
+    <Form.Control type="text" placeholder="Enter Batch No" name="batch_no"/>
     </Form.Group>
 </Col>
 
