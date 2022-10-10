@@ -39,6 +39,15 @@ function fetchData(url){
 }
 
 
+//POST abstraction
+const post=(url,dataToPost)=>fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(dataToPost),
+  });
+
 const increaseStock=()=>{
 
 
@@ -60,13 +69,7 @@ expiry:formData.current.expiry.value
 }
 
 //post new transactions to database
-fetch(receiptsUrl, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(newCommodity),
-  });
+post(receiptsUrl,newCommodity)
 setCommodities([...commodities,newCommodity]);
 
 
