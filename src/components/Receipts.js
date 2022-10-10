@@ -22,7 +22,7 @@ useEffect(()=>{
     .then((data)=>{
 
      return setCommodities(data)})
-    .catch((error)=>console.log("Error",error))
+    .catch((error)=>console.log("Error : ",error))
 
     },[]);
 
@@ -43,7 +43,13 @@ receivedBy:formData.current.received_by.value,
 expiry:formData.current.expiry.value
 
 }
-
+fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newCommodity),
+  });
 setCommodities([...commodities,newCommodity]);
 
 
