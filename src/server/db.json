@@ -4,11 +4,11 @@
 "commodityName":"syphichek",
 "date":"2018-12-10T23:59:59.000Z",
 "receivedFrom":"Nakuru County",
-"docNo":"068168",
+
 "quantity":6,
 "batchNo":"2341X",
 "expiry":"2022-07-31",
-"loc":"lab stock",
+
 "name":"Njuguna"
 
 
@@ -17,7 +17,7 @@
 "disbursement":[
 { "commodityName":"syphichek",
 "id":0,
-"date":"2018-12-10T23:59:59.000Z",
+"date":"2018-12-10",
 "docNo":"4732",
 "quantity":3,
 "destination":"Karagita",
@@ -27,6 +27,7 @@
 ],
 "stock":[
     {"commodityName":"syphichek",
+"expiry":"2018-12-22",
  "balance":3,
 "unitValue":25,
 "totalValue":75,

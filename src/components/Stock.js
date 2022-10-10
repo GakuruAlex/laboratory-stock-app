@@ -1,18 +1,27 @@
 import React ,{useEffect,useState}from "react";
 
+import Receipts from "./Receipts";
+
 function Stock() {
 const baseUrl= "http://localhost:3000/stock";
-const[stock,setStock]=useState([]);
+
+const [stockData,setStockData]=useState([])
 
 useEffect(()=>{
 
 fetch(baseUrl)
 .then((response)=>response.json())
-.then((data)=>setStock(data))
+.then((data)=>{
+
+ return setStockData(data)})
 .catch((error)=>console.log("Error",error))
 
 },[]);
-const displayStock=stock.map((aStock)=>{
+
+
+
+
+const displayStock=stockData.map((aStock)=>{
 return <React.Fragment key={aStock.id} >
 <table class="border-separate border-spacing-3 border border-slate-300 ...">
   <thead>
