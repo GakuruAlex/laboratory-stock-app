@@ -86,7 +86,7 @@ console.log("Is dispatch status",isDispatch);
 {isDispatch &&
 
 <BrowserRouter>
-<Route path='/disbursement' element={<Disbursment />}></Route>
+<Route path='/disbursement' element={<Disbursment commodities={stockData}/>}></Route>
 
 </BrowserRouter>
 
