@@ -1,4 +1,7 @@
 import React ,{useEffect,useState}from "react";
+import { Button } from "react-bootstrap";
+import { BrowserRouter,NavLink,Route} from "react-router-dom";
+
 
 
 import Disbursment from "./Disbursment";
@@ -26,10 +29,12 @@ fetchStock();
 
 
 
-const handleClick = event => {
+const handleClick = () => {
   // 👇️ toggle shown state
-  setIsDispatch(current => !current);
 
+  console.log("Button clicked")
+  const status=setIsDispatch(current => !current);
+  return status;
 
 };
 
@@ -39,7 +44,7 @@ return <React.Fragment key={aStock.id} >
 
 
 
-<table class="border-separate border-spacing-3 border border-slate-300 ...">
+<table class="border-separate border-spacing-3 border border-slate-200 ...">
   <thead>
     <tr>
       <th class="border border-slate-300 ...">Batch number</th>
@@ -54,28 +59,44 @@ return <React.Fragment key={aStock.id} >
       <td class="border border-slate-300 ...">{aStock.batchNo}</td>
       <td class="border border-slate-300 ...">{aStock.quantity}</td>
       <th class="border border-slate-300 ...">{aStock.expiry}</th>
-      <th>  <Button variant="primary"  type="button"  onClick={handleClick}>
-        Dispatch Stock
+      <th><NavLink  to="/disbursment">
+      <Button variant="primary"  type="button"  onClick={handleClick }>
+        Dispatch Stock </Button>
+      </NavLink>
 
-    </Button></th>
+        </th>
 
     </tr>
 
   </tbody>
 </table>
 
+
+
 </React.Fragment>
 
 })
 
+console.log("Is dispatch status",isDispatch);
+
+    return ( <React.Fragment>
+      {displayStock}
 
 
-    return ( <React.Fragment>{displayStock}
+{isDispatch &&
+
+<BrowserRouter>
+<Route path='/disbursement' element={<Disbursment />}></Route>
+
+</BrowserRouter>
 
 
-{isDispatch && <Disbursment />}
 
-    </React.Fragment> );
+
+}
+
+
+</React.Fragment>)
 }
 
 export default Stock;
