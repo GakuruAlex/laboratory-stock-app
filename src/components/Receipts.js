@@ -5,6 +5,8 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 
+import DisplayReceipts from "./DisplayReceipts";
+
 
 function Receipts() {
 
@@ -14,30 +16,35 @@ const [commodities,setCommodities]=useState([]);
 
 const [stock,setStock]=useState([]);
 
-const fetchUrl="http://localhost:3000";
+
 const receiptsUrl="http://localhost:3000/receipts";
 const stockUrl="http://localhost:3000/stock";
 
 
 useEffect(()=>{
 //Fetch existing  receipts transactions
-const receiptData=fetchData(receiptsUrl)
-setCommodities(receiptData)
-//fetch existing stock data
-const stockData=fetchData(stockUrl)
-setStock(stockData)
+
+fetchData(receiptsUrl)
+      .then((res) => {
+        setCommodities(res)
+      })
+      .catch((e) => {
+        console.log(e.message)
+      })
+
 
 
     },[]);
 
 //fetch abstraction
-function fetchData(url){
-   fetch(url)
-   .then((response)=>response.json())
-   .then((data)=>data)
-   .catch((error)=>error);
+const fetchData = async (url) => {
+    const response = await fetch(url)
+    if (!response.ok) {
+      throw new Error('Data coud not be fetched!')
+    } else {
+      return response.json()
+    }
 }
-
 
 //POST abstraction
 const post=(url,dataToPost)=>fetch(url, {
@@ -47,11 +54,6 @@ const post=(url,dataToPost)=>fetch(url, {
     },
     body: JSON.stringify(dataToPost),
   });
-
-const increaseStock=()=>{
-
-
-}
 
 const add=(event)=>{
 
@@ -73,14 +75,18 @@ post(receiptsUrl,newCommodity)
 setCommodities([...commodities,newCommodity]);
 
 
-
     }
 
 
+
+console.log("commodities are",commodities)
+
   return (
-    <React.Fragment>
-   {/*Receipts Form  */}
-   <Form onSubmit={add} ref={formData} class="  m-2">
+    <React.Fragment  >
+       {/*Receipts Form  */}
+
+<div  className="w-100 p-3" style={{ backgroundColor: "#eee" }}>
+   <Form onSubmit={add} ref={formData}  >
 <Row>
 
 <Col>
@@ -125,12 +131,14 @@ setCommodities([...commodities,newCommodity]);
     </Col>
 </Row>
 
-<Row  xs={4} class="mt-3 col-md-12 text-center">
+<Row  xs={4} className="w-100 p-3" style={{ backgroundColor: "#eee" }}>
     <Button variant="primary"  type="submit">
         Add to Inventory
     </Button>
 </Row>
     </Form>
+
+    </div>
 
     </React.Fragment>
 
