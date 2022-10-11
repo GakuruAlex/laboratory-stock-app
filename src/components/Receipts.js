@@ -139,7 +139,7 @@ console.log("commodities are",commodities)
     </Form>
 
     </div>
-
+    <DisplayReceipts commodities={commodities} />
     </React.Fragment>
 
 
