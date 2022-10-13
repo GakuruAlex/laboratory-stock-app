@@ -11,7 +11,10 @@ function Stock() {
 const baseUrl= "http://localhost:3000/receipts";
 
 const [stockData,setStockData]=useState([])
-const[clickedData,setClickedData]=useState([]);
+
+let [indexOfClicked,setIndexOfClicked]=useState([]);
+
+
 
 //Redirect to dispatch
 const [isDispatch, setIsDispatch] = useState(false);
@@ -31,13 +34,16 @@ fetchStock();
 
 const handleClick = (event) => {
   // 👇️ toggle shown state
-const indexOfClicked=event.target.value;
-setClickedData(stockData[indexOfClicked])
-  console.log("Button clicked")
+console.log("Index of clicked is in handleclick",event.target.value)
+
+console.log("Event current target is ",event.currentT)
+
   const status=setIsDispatch(current => !current);
-  return status;
+    return status;
 
 };
+
+
 
 const displayStock=stockData.map((aStock)=>{
 
@@ -61,8 +67,14 @@ return <React.Fragment key={aStock.id} >
       <td class="border border-slate-300 ...">{aStock.quantity}</td>
       <th class="border border-slate-300 ...">{aStock.expiry}</th>
       <th><NavLink  to="/disbursment">
-      <Button variant="primary"  type="button"  onClick={handleClick }>
-        Dispatch Stock </Button>
+
+      <Button variant="primary"  type="button"
+      value={aStock.id}
+      onClick={(event)=>{handleClick(event)} }>
+
+        Dispatch Stock
+        </Button>
+
       </NavLink>
 
         </th>
@@ -78,8 +90,8 @@ return <React.Fragment key={aStock.id} >
 
 })
 
-console.log("Is dispatch status",isDispatch);
 
+console.log("Index of clicked in stock ene",indexOfClicked)
     return ( <React.Fragment>
       {displayStock}
 
@@ -87,7 +99,7 @@ console.log("Is dispatch status",isDispatch);
 {isDispatch &&
 
 <BrowserRouter>
-<Route path='/disbursement' element={<Disbursment commodities={clickedData}/>}></Route>
+<Route path='/disbursement' element={<Disbursment indexOfClicked={indexOfClicked}/>}></Route>
 
 </BrowserRouter>
 
