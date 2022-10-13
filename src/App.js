@@ -7,6 +7,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 import Receipts from './components/Receipts';
 import Disbursment from './components/Disbursment';
+import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
   return (

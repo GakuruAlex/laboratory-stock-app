@@ -1,37 +1,100 @@
 {
-"receipts":[
-    {"id":0,
-"commodityName":"syphichek",
-"date":"2018-12-10T23:59:59.000Z",
-"receivedFrom":"Nakuru County",
+  "receipts": [
+    {
+      "id": 0,
+      "date": "2018-12-10T23:59:59.000Z",
+      "receivedFrom": "Nakuru County",
+      "quantity": 6,
+      "batchNo": "2341X",
+      "expiry": "2022-07-31",
+      "name": "Njuguna"
+    },
+    {
+      "dateReceived": "2022-10-10",
+      "batchNo": "heloo",
+      "receivedFrom": "Jane",
+      "quantity": 12,
+      "receivedBy": "world",
+      "expiry": "2022-10-28",
+      "id": 1
+    },
+    {
+      "dateReceived": "2022-10-10",
+      "batchNo": "heloo",
+      "receivedFrom": "Jane",
+      "quantity": 12,
+      "receivedBy": "world",
+      "expiry": "2022-10-28",
+      "id": 2
+    },
+    {
+      "dateReceived": "2022-09-06",
+      "batchNo": "abcdy1234",
+      "receivedFrom": "john",
+      "quantity": 15,
+      "receivedBy": "jane",
+      "expiry": "2022-10-11",
+      "id": 3
+    },
 
-"quantity":6,
-"batchNo":"2341X",
-"expiry":"2022-07-31",
 
-"name":"Njuguna"
+    {
+      "dateReceived": "2022-08-09",
+      "batchNo": "cd43211",
+      "receivedFrom": "kip",
+      "quantity": 50,
+      "receivedBy": "jane",
+      "expiry": "2022-11-16",
+      "id": 4
+    },
 
-
+    {
+      "dateReceived": "2022-09-06",
+      "batchNo": "X5423b",
+      "receivedFrom": "john Doe",
+      "quantity": 75,
+      "receivedBy": "Jane Doe",
+      "expiry": "2022-10-31",
+      "id": 5
+    },
+    {
+      "dateReceived": "2022-08-09",
+      "batchNo": "xyz234",
+      "receivedFrom": "Jane Doe John",
+      "quantity": 45,
+      "receivedBy": "John Jane Doe",
+      "expiry": "2022-10-27",
+      "id": 6
+    },
+    {
+      "dateReceived": "2022-10-10",
+      "batchNo": "yzx532",
+      "receivedFrom": "John",
+      "quantity": 100,
+      "receivedBy": "Alex",
+      "expiry": "2022-10-31",
+      "id": 7
+    }
+  ],
+  "disbursement": [
+    {
+      "batchNo": "syphichek",
+      "id": 0,
+      "date": "2018-12-10",
+      "docNo": "4732",
+      "quantity": 3,
+      "destination": "Karagita",
+      "name": "Jane Doe"
+    }
+  ],
+  "stock": [
+    {
+      "batchNo": "1234XYZ",
+      "expiry": "2018-12-22",
+      "balance": 3,
+      "unitValue": 25,
+      "totalValue": 75,
+      "id": 0
+    }
+  ]
 }
-],
-"disbursement":[
-{ "commodityName":"syphichek",
-"id":0,
-"date":"2018-12-10",
-"docNo":"4732",
-"quantity":3,
-"destination":"Karagita",
-"name":"Cate"
-
-}
-],
-"stock":[
-    {"commodityName":"syphichek",
-"expiry":"2018-12-22",
- "balance":3,
-"unitValue":25,
-"totalValue":75,
-"id":0
-}]
-}
-
