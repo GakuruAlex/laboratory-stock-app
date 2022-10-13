@@ -11,7 +11,7 @@ function Stock() {
 const baseUrl= "http://localhost:3000/receipts";
 
 const [stockData,setStockData]=useState([])
-
+const[clickedData,setClickedData]=useState([]);
 
 //Redirect to dispatch
 const [isDispatch, setIsDispatch] = useState(false);
@@ -29,9 +29,10 @@ fetchStock();
 
 
 
-const handleClick = () => {
+const handleClick = (event) => {
   // 👇️ toggle shown state
-
+const indexOfClicked=event.target.value;
+setClickedData(stockData[indexOfClicked])
   console.log("Button clicked")
   const status=setIsDispatch(current => !current);
   return status;
@@ -86,7 +87,7 @@ console.log("Is dispatch status",isDispatch);
 {isDispatch &&
 
 <BrowserRouter>
-<Route path='/disbursement' element={<Disbursment commodities={stockData}/>}></Route>
+<Route path='/disbursement' element={<Disbursment commodities={clickedData}/>}></Route>
 
 </BrowserRouter>
 
